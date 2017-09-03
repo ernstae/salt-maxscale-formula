@@ -1,0 +1,92 @@
+maxscale:
+  settings:
+    threads: auto
+    auth_connect_timeout: 10
+    auth_read_timeout: 10
+    auto_write_timeout: 10
+    ms_timestamp: 0
+    skip_permission_checks: true
+    syslog: 1
+    maxlog: 1
+    log_to_shm: 0
+    log_warning: 0
+    log_notice: 0
+    log_info: 1
+    log_debug: 0
+    log_augmentation: 0
+    log_throttling: "10, 1000, 10000"
+    logdir: /var/log/maxscale
+    datadir: /var/lib/maxscale/data
+    libdir: /var/lib/maxscale/lib
+    piddir: /var/run
+    execdir: /usr/bin
+    connector_plugindir: /usr/lib/plugin
+    persistdir: /var/lib/maxscale/maxscale.cnf.d
+    query_classifier: qc_sqlite
+    query_classifier_args: "log_unrecognized_statements=1"
+  service:
+    Test Service:
+      type: service
+      router: readconnroute
+      router_options: slave
+      filters:
+        - counter
+        - QLA
+      servers:
+        - server1
+        - server2
+        - server3
+      user: maxscale
+      passwd: Mhu87p2D
+      enable_root_user: false
+      localhost_match_wildcard_host: 0
+      version_string: 5.5.37-MariaDB-RWsplit
+      weightby: serv_weight
+      auth_all_servers: true
+      strip_db_esc: true
+      retry_on_failure: true
+      lo_auth_warnings: true
+      connection_timeout: 300
+      max_connections: 100
+  server:
+    server1:
+      address: 127.0.0.1
+      port: 3066
+      protocol: MySQLBackend
+      monitoruser: mymonitoruser
+      monitorpw: mymonitorpassword
+      persistpoolmax: 0
+      persistmaxtime: 300
+      serv_weight: 1
+      ssl: required
+      ssl_version: TLSv10
+      ssl_cert: /etc/pki/mariadb/maxscale/ssl/crt.pem
+      ssl_key: /etc/pki/mariadb/maxscale/ssl/key.pem
+      ssl_ca_cert: /etc/pki/mariadb/maxscale/ssl/crt.ca.pem
+    server2:
+      address: 127.0.1.1
+      port: 3306
+      protocol: MySQLBackend
+      serv_weight: 1
+  listener:
+    type: listener
+    service: Test Service
+    protocol: MySQLClient
+    address: 192.168.0.1
+    port: 3306
+    socket: /var/run/maxscale.socket
+    authenticator: MySQL
+    ssl: required
+    ssl_version: TLSv10
+    ssl_cert: /etc/pki/mariadb/maxscale/ssl/crt.pem
+    ssl_key: /etc/pki/mariadb/maxscale/ssl/key.pem
+    ssl_ca_cert: /etc/pki/mariadb/maxscale/ssl/crt.ca.pem
+    ssl_cert_verify_depth: 9
+  filter:
+    MyLogFilter:
+      type: filter
+      module: qlafilter
+    topfilter:
+      type: filter
+      module: topfilter
+
