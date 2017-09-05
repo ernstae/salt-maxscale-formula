@@ -1,3 +1,13 @@
-{% reserved_words = ["servers", "filters"] %}
+{% set maxscale = pillar.get('maxscale', {}) -%}
+{% set reserved_keys = ['config', 'service', 'service', 'server', 'listener', 'filter'] %}
+{% set special_format_fields = ['servers', 'filters'] -%}
 
-# loop through everything except reserved reserved_words
+{% for section in reserved_keys -%}
+{% for key, argument in maxscale[section].iteritems() -%}
+{% if key is mapping -%}
+[{{ key }}]
+{%- elif key %}
+{{ key }}={{ argument }}
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
