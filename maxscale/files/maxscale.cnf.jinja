@@ -1,3 +1,7 @@
-{% reserved_words = ["servers", "filters"] %}
+{% reserved_words = ['settings','service','server','listener','filter'] %}
+{% maxscale = salt['pillar.get']('maxscale', []) %}
 
-# loop through everything except reserved reserved_words
+{% for section in reserved_words %}
+[{{ section }}]
+{% for maxscale[section].iteritems() %}
+{% endfor %}
