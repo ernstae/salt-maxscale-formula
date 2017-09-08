@@ -1,6 +1,7 @@
 {% set maxscale = salt['grains.filter_by']( {
     'Debian': {
         'etcdir': '/etc/maxscale',
+        'gpgkeys': ['8167EE24', 'E3C94F49', '1BB943DB', 'C74CD1D8'],
     },
     'RedHat': {
         'etcdir': '/etc/maxscale',

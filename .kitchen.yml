@@ -1,3 +1,9 @@
+<%
+require 'yaml'
+
+formula = YAML.load_file('FORMULA')
+formula_name = formula['name']
+%>
 ---
 driver:
   name: docker
@@ -10,17 +16,15 @@ platforms:
 
 provisioner:
   name: salt_solo
-  formula: maxscale
-  pillars:
-    top.sls:
-      base:
-        '*':
-
+  salt_install: bootstrap
+  salt_bootstrap_url: https://bootstrap.saltstack.com
+  salt_version: latest
+  salt_pillar_root: pillar.example
+  log_level: <%= ENV['SALT_DEBUG_LEVEL'] || 'info' %>
+  formula: <%= formula_name %>
   state_top:
     base:
       '*':
-        - maxscale
+        - <%= formula_name %>
 suites:
   - name: default
-    run_list:
-    attributes:

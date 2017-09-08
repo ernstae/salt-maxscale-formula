@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-{% reserved_words = ['settings','service','server','listener','filter'] %}
-{% maxscale = salt['pillar.get']('maxscale', []) %}
-
-{% for section in reserved_words %}
-[{{ section }}]
-{% for maxscale[section].iteritems() %}
-{% endfor %}
-=======
 {% set maxscale = pillar.get('maxscale', {}) -%}
 {% set reserved_keys = ['config', 'service', 'service', 'server', 'listener', 'filter'] %}
 {% set special_format_fields = ['servers', 'filters'] -%}
@@ -20,4 +11,3 @@
 {%- endif %}
 {%- endfor %}
 {%- endfor %}
->>>>>>> aebb0b07ba70f857bd90eb0eddd7926aa72db9ec
