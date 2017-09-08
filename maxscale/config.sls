@@ -10,4 +10,4 @@ maxscale_config_file:
     - watch_in:
       - service: maxscale_service
     - require:
-      - pkg: maxscale
+      - pkg: {{ maxscale.pkgname }}
