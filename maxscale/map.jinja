@@ -1,0 +1,8 @@
+{% set maxscale = salt['grains.filter_by']( {
+    'Debian': {
+        'etcdir': '/etc/maxscale',
+    },
+    'RedHat': {
+        'etcdir': '/etc/maxscale',
+    },
+}, grain='os_family', merge=salt['pillar.get']('maxscale', {}), default='Debian') %}
