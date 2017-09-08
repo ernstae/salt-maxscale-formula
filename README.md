@@ -23,3 +23,16 @@ This formula accepts arbitrary pillar data and with the exception of reserved ke
   - listener
   - filter
 ```
+
+
+Testing
+--
+This formula uses Test Kitchen and kitchen-salt along with kitchen-docker as a driver.  Currently, this is tested against the following configurations:
+
+* Ubuntu 14.04
+* Ubuntu 16.04
+* CentOS 7.3
+
+To run the tests, ensure you have `Docker`, `test-kitchen`, `kitchen-salt`, `kitchen-docker` installed in your environment.  That is mostly accomplished by having Ruby installed and then running `gem install`
+
+To perform testing, go to the root directory of this salt formula and run `kitchen test`
