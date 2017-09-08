@@ -7,13 +7,14 @@ mariadb_repo:
     - humanname: MariaDB Repository
     - name: "{{ maxscale.repo_url|replace("[[osfullname]]",salt['grains.get']('osfullname', 'ubuntu')|lower)|replace("[[oscodename]]", salt['grains.get']('oscodename', trusty)) }}"
     - file: /etc/apt/sources.list.d/mariadb.list
+    - keyid: 1BB943DB
 {%- elif os_family == 'RedHat' %}
     - humanname: {{ maxscale.humanname }}
     - baseurl: {{ maxscale.baseurl }}
     - name: {{ maxscale.name }}
     - enabled: True
+    - keyid: 8167ee24
 {%- endif %}
-    - keyid: 1BB943DB
     - keyserver: keyserver.ubuntu.com
 
 maxscale_pkg:
