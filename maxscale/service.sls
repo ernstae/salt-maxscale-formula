@@ -9,5 +9,5 @@ maxscale_service:
       - sls: maxscale.install
       - sls: maxscale.config
     - watch:
-      - pkg: maxscale
+      - pkg: {{ maxscale.pkgname }}
       - file: maxscale_config_file

@@ -14,3 +14,9 @@ mariadb_repo:
     - name: {{ maxscale.name }}
     - enabled: True
 {%- endif %}
+
+mariadb_pkg:
+  pkg.installed:
+    - name: {{ maxscale.pkgname }}
+    - require:
+      pkgrepo: mariadb_repo
