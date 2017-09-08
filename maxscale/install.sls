@@ -3,5 +3,6 @@
 mariadb_repo:
   pkgrepo.managed:
     - humanname: MariaDB Repository
-    - name: "deb http://downloads.mariadb.com/MaxScale/2.1/ubuntu {{ salt['grains.get'](')}} main"
+    - name: "{{ maxscale.repo_url|replace("[[osfullname]]",salt['grains.get']('osfullname', 'ubuntu')|lower)|replace("[[oscodename]]", salt['grains.get']('oscodename', trusty)) }}"
     - file: /etc/apt/sources.list.d/mariadb.list
+    - gpgkey: C74CD1D8
