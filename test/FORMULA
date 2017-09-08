@@ -1,8 +1,0 @@
-name: maxscale
-os: Redhat, CentOS, Debian, Ubuntu
-os_family: RedHat, Debian
-version: 20170911
-release: 1
-minimum_version: 2017.7
-summary: MariaDB MaxScale Salt Formula
-description: Formula for installing and managing MariaDB maxscale
