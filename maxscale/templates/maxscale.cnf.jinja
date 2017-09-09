@@ -4,7 +4,7 @@
 
 {% for section in reserved_keys -%}
 {% for key, argument in maxscale.get(section,{}).iteritems() -%}
-{% if argument is mapping -%}
+{% if key is mapping -%}
 [{{ key }}]
 {%- for embkey, embarg in argument %}
 {{ embkey }}={{ embarg }}
