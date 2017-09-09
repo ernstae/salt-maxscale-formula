@@ -19,7 +19,18 @@ mariadb_repo:
     - require_in:
       - pkg: maxscale.pkg
 
+# install yum-plugin-versionlock on RHEL if maxscale.version_hold: True
+{%- if os_family == 'RedHat' AND maxscale.get('version_hold', False) %}
+{%- set version_hold = True %}
+yum-plugin-versionlock:
+  - pkg.installed
+  - require_in: 
+    - pkg: maxscale.pkg
+{%- endif %}
+
 maxscale.pkg:
   pkg.installed:
     - name: {{ maxscale.pkgname }}
-    - hold: True
+{%- if version_hold %}
+    - hold: {{True}}
+{%- endif %}
