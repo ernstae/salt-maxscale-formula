@@ -2,15 +2,11 @@
 {% set reserved_keys = ['config', 'service', 'service', 'server', 'listener', 'filter'] %}
 {% set special_format_fields = ['servers', 'filters'] -%}
 
-{% for section in reserved_keys -%}
-{% for key, argument in maxscale.get(section,{}).iteritems() -%}
-{% if key is mapping -%}
-[{{ key }}]
-{%- for embkey, embarg in argument %}
-{{ embkey }}={{ embarg }}
+{%- for reserved_section in reserved_keys -%}
+{%- for section, options in maxscale.get(reserved_section,{}).iteritems() %}
+[{{ section }}]
+{%- for option, value in options.iteritems() %}
+{{ option }}={{ value }}
 {%- endfor %}
-{%- elif key %}
-{{ key }}={{ argument }}
-{%- endif %}
 {%- endfor %}
 {%- endfor %}
