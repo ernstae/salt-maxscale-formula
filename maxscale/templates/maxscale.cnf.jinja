@@ -4,8 +4,11 @@
 
 {% for section in reserved_keys -%}
 {% for key, argument in maxscale.get(section,{}).iteritems() -%}
-{% if key is mapping -%}
+{% if argument is mapping -%}
 [{{ key }}]
+{%- for embkey, embarg in argument %}
+{{ embkey }}={{ embarg }}
+{%- endfor %}
 {%- elif key %}
 {{ key }}={{ argument }}
 {%- endif %}
