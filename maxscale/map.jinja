@@ -11,5 +11,6 @@
         'baseurl': 'https://downloads.mariadb.com/MaxScale/2.1/rhel/$releasever/$basearch',
         'humanname': 'mariadb',
         'pkgname': 'maxscale',
+        'gpg_key': 'https://downloads.mariadb.com/MaxScale/MariaDB-MaxScale-GPG-KEY',
     },
 }, grain='os_family', merge=salt['pillar.get']('maxscale', {}), default='Debian') %}

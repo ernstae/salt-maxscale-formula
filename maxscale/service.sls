@@ -1,6 +1,6 @@
 {% from "maxscale/map.jinja" import maxscale as maxscale with context %}
 
-maxscale_service:
+maxscale.service:
   service.running:
     - name: maxscale
     - enable: True

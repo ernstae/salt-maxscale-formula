@@ -8,6 +8,6 @@ maxscale_config_file:
     - user: root
     - mode: 644
     - watch_in:
-      - service: maxscale_service
+      - service: maxscale.service
     - require:
       - pkg: {{ maxscale.pkgname }}

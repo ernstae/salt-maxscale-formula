@@ -8,16 +8,18 @@ mariadb_repo:
     - name: "{{ maxscale.repo_url|replace("[[osfullname]]",salt['grains.get']('osfullname', 'ubuntu')|lower)|replace("[[oscodename]]", salt['grains.get']('oscodename', trusty)) }}"
     - file: /etc/apt/sources.list.d/mariadb.list
     - keyid: 1BB943DB
+    - keyserver: keyserver.ubuntu.com
 {%- elif os_family == 'RedHat' %}
     - humanname: {{ maxscale.humanname }}
     - baseurl: {{ maxscale.baseurl }}
     - name: {{ maxscale.name }}
     - enabled: True
-    - keyid: 8167ee24
+    - gpgkey: {{ maxscale.gpg_key }}
 {%- endif %}
-    - keyserver: keyserver.ubuntu.com
+    - require_in:
+      - pkg: maxscale.pkg
 
-maxscale_pkg:
+maxscale.pkg:
   pkg.installed:
     - name: {{ maxscale.pkgname }}
     - hold: True
