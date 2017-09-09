@@ -3,7 +3,7 @@
 {% set special_format_fields = ['servers', 'filters'] -%}
 
 {% for section in reserved_keys -%}
-{% for key, argument in maxscale[section].iteritems() -%}
+{% for key, argument in maxscale.get(section,{}).iteritems() -%}
 {% if key is mapping -%}
 [{{ key }}]
 {%- elif key %}
