@@ -12,8 +12,16 @@
 {%- if options is mapping %}
 [{{ section }}]
 {%- for option, value in options.iteritems() %}
+{%- if ( option == 'filter' ) %}
+{{ option }}={%- for filtername in value %}{{ filtername }}{%- if not loop.last %}|{%- endif %}{%- endfor %}
+{%- elif ( option == 'servers' ) %}
+{{ option }}={%- for servername in value %}{{ servername }}{%- if not loop.last %},{%- endif %}{%- endfor %}
+{%- else %}
 {{ option }}={{ value }}
+{%- endif %}
 {%- endfor %}
 {%- endif %}
 {%- endfor %}
+
+
 {%- endfor %}
