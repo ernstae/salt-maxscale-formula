@@ -10,6 +10,12 @@ Warning
 --
 This is currently a work in progress and should not be employed in a production environment.
 
+Supported Platforms
+--
+This formula has been tested with Debian and RedHat os_family distributions.  At the time of writing, MariaDB supports rhel variants `> 5.0` and Ubuntu `trusty` and `xenial`
+
+If installing on RHEL variants, and specifying pillar value `maxscale:version_hold: True`, a necessary dependency `yum-plugin-versionlock` will be installed to ensure the package can be held at a specific version.  
+
 Configuration
 --
 For more information on configuration options please review the documentation https://mariadb.com/kb/en/mariadb-enterprise/mariadb-maxscale-21-mariadb-maxscale-configuration-usage-scenarios/#monitor-modules
