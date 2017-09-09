@@ -26,8 +26,6 @@ maxscale_extra_pkg:
   pkg.installed:
     - pkgs:
       - yum-plugin-versionlock
-  - require_in: 
-    - pkg: maxscale.pkg
 {%- endif %}
 
 maxscale.pkg:
