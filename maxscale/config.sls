@@ -1,5 +1,8 @@
 {% from "maxscale/map.jinja" import maxscale as maxscale with context %}
 
+include:
+  - .service
+
 maxscale_config_file:
   file.managed:
     - name: "{{ maxscale.etcdir }}/maxscale.cnf"
