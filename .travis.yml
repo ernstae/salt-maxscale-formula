@@ -12,7 +12,6 @@ addons:
       - git
       - python-pip
       - apt-transport-https
-      - kitchen
 
 rvm:
   - ruby
