@@ -1,5 +1,7 @@
 language: ruby
 
+sudo: true
+
 services:
   - docker
 
@@ -10,6 +12,7 @@ addons:
       - git
       - python-pip
       - apt-transport-https
+      - kitchen
 
 rvm:
   - ruby
@@ -17,6 +20,7 @@ rvm:
 before_script: sudo iptables -L DOCKER || sudo iptables -N DOCKER
 
 before_install:
-  - gem install test-kitchen kitchen-salt kitchen-docker
+  - sudo gem install test-kitchen kitchen-salt kitchen-docker
 
-script: bundle exec kitchen verify
+script:
+  - kitchen verify
