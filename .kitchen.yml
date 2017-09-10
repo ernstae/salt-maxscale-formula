@@ -8,11 +8,18 @@ formula_name = formula['name']
 driver:
   name: docker
   use_sudo: false
-
+  privileged: true
+  
 platforms:
   - name: ubuntu-14.04
+    driver_config:
+      run_command: /sbin/init
   - name: ubuntu-16.04
-  - name: centos-7.3
+    driver_config:
+      run_command: /bin/systemd
+  - name: centos-7
+    driver_config:
+      run_command: /usr/lib/systemd/systemd
 
 provisioner:
   name: salt_solo
