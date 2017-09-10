@@ -31,6 +31,6 @@ maxscale_extra_pkg:
 maxscale.pkg:
   pkg.installed:
     - name: {{ maxscale.pkgname }}
-{%- if version_hold %}
+{%- if version_hold is defined and version_hold == True %}
     - hold: {{True}}
 {%- endif %}
