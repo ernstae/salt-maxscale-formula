@@ -6,9 +6,6 @@ Overview
 --
 This is a saltstack formula for installing and configuring MariaDB MaxScale
 
-Warning
---
-This is currently a work in progress and should not be employed in a production environment.
 
 Supported Platforms
 --
