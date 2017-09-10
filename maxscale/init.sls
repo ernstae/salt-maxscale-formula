@@ -1,5 +1,5 @@
 include:
-  - .install
-  - .config
-  - .service
+  - maxscale.install
+  - maxscale.config
+  - maxscale.service
   

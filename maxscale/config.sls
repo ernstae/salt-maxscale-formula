@@ -1,7 +1,7 @@
 {% from "maxscale/map.jinja" import maxscale as maxscale with context %}
 
 include:
-  - .service
+  - maxscale.service
 
 maxscale_config_file:
   file.managed:
