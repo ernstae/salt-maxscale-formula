@@ -1,6 +1,17 @@
 {%- from "maxscale/map.jinja" import maxscale as maxscale with context %}
 {%- set os_family = salt['grains.get']('os_family', 'Debian') %}
 
+# Install the GPG keys used for signing the pkgs.
+{%- if ( os_family == 'Debian' ) %}
+{%- for key in maxscale.get('gpgkeys',[]) %}
+maxscale_install_gpgkey_{{ key }}:
+  cmd.run:
+    - name: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys {{ key }}
+    - unless: apt-key list | grep {{ key }}
+{%- endfor %}
+{%- endif %}
+
+# installation of the repository (both deb and rpm)
 mariadb_repo:
   pkgrepo.managed:
 {%- if os_family == 'Debian' %}
@@ -28,6 +39,7 @@ maxscale_extra_pkg:
       - yum-plugin-versionlock
 {%- endif %}
 
+# finally, install the package for maxscale 
 maxscale.pkg:
   pkg.installed:
     - name: {{ maxscale.pkgname }}

@@ -1,5 +1,9 @@
 {% from "maxscale/map.jinja" import maxscale as maxscale with context %}
 
+include:
+  - maxscale.install
+  - maxscale.config
+
 maxscale.service:
   service.running:
     - name: maxscale
