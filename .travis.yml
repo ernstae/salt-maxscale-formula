@@ -1,4 +1,5 @@
-language: ruby
+rvm:
+  - 2.6
 
 sudo: true
 
@@ -12,14 +13,12 @@ addons:
       - git
       - python-pip
       - apt-transport-https
-
-rvm:
-  - ruby
+      - docker
 
 before_script: sudo iptables -L DOCKER || sudo iptables -N DOCKER
 
 before_install:
-  - sudo gem install test-kitchen kitchen-salt kitchen-docker
+  - gem install test-kitchen kitchen-salt kitchen-docker
 
 script:
   - kitchen verify
