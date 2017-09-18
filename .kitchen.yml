@@ -12,6 +12,7 @@ driver:
   
 platforms:
   - name: ubuntu-14.04
+    image: ubuntu-upstart:14.04
     driver_config:
       run_command: /sbin/init
   - name: ubuntu-16.04
