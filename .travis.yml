@@ -19,4 +19,4 @@ install:
   - /opt/chefdk/bin/chef gem install test-kitchen kitchen-docker kitchen-salt
 
 script:
-  - /opt/chefdk/bin/chef kitchen verify
+  - /opt/chefdk/bin/chef exec kitchen verify
