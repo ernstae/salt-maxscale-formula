@@ -5,6 +5,13 @@ sudo: true
 services:
   - docker
 
+addons:
+  apt:
+    packages:
+      - curl
+      - git
+      - apt-transport-https
+
 before_install:
   - curl -s https://packagecloud.io/install/repositories/chef/stable/script.deb.sh | sudo bash
 install:
