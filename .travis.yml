@@ -16,7 +16,7 @@ before_install:
   - curl -O https://packages.chef.io/files/stable/chefdk/2.3.1/ubuntu/14.04/chefdk_2.3.1-1_amd64.deb
   - sudo dpkg -i chefdk_2.3.1-1_amd64.deb
 install:
-  - /opt/chefdk/bin/chef gem install kitchen-docker kitchen-salt
+  - /opt/chefdk/bin/chef gem install test-kitchen kitchen-docker kitchen-salt
 
 script:
   - /opt/chefdk/bin/chef kitchen verify
