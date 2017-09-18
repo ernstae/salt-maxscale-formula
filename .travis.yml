@@ -18,5 +18,9 @@ before_install:
 install:
   - /opt/chefdk/bin/chef gem install test-kitchen kitchen-docker kitchen-salt
 
+before_script:
+  - sudo iptables -L DOCKER || sudo iptables -N DOCKER
+
+
 script:
   - /opt/chefdk/bin/chef exec kitchen verify
