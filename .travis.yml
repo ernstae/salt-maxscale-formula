@@ -1,24 +1,15 @@
-rvm:
-  - 2.4
+language: ruby
 
 sudo: true
 
 services:
   - docker
 
-addons:
-  apt:
-    packages:
-      - curl
-      - git
-      - python-pip
-      - apt-transport-https
-      - docker
-
-before_script: sudo iptables -L DOCKER || sudo iptables -N DOCKER
-
 before_install:
-  - gem install test-kitchen kitchen-salt kitchen-docker
+  - curl -s https://packagecloud.io/install/repositories/chef/stable/script.deb.sh | sudo bash
+install:
+  - sudo apt-get install chefdk
+  - /opt/chefdk/bin/chef gem install kitchen-docker kitchen-salt
 
 script:
-  - kitchen verify
+  - /opt/chefdk/bin/chef kitchen verify
