@@ -1,4 +1,4 @@
-salt-maxscale-formula
+## salt-maxscale-formula [![Build Status](https://travis-ci.org/ernstae/salt-maxscale-formula.svg?branch=master)](https://travis-ci.org/ernstae/salt-maxscale-formula)
 ====
 Author: Andrew Ernst <ernstae@github.com>
 
