@@ -11,9 +11,6 @@ driver:
   privileged: true
   
 platforms:
-  - name: ubuntu-14.04
-    driver_config:
-      run_command: /sbin/init
   - name: ubuntu-16.04
     driver_config:
       run_command: /bin/systemd

@@ -10,16 +10,17 @@ addons:
     packages:
       - curl
       - git
-      - python-pip
       - apt-transport-https
 
-rvm:
-  - ruby
-
-before_script: sudo iptables -L DOCKER || sudo iptables -N DOCKER
-
 before_install:
-  - sudo gem install test-kitchen kitchen-salt kitchen-docker
+  - curl -O https://packages.chef.io/files/stable/chefdk/2.3.1/ubuntu/14.04/chefdk_2.3.1-1_amd64.deb
+  - sudo dpkg -i chefdk_2.3.1-1_amd64.deb
+install:
+  - /opt/chefdk/bin/chef gem install test-kitchen kitchen-docker kitchen-salt
+
+before_script:
+  - sudo iptables -L DOCKER || sudo iptables -N DOCKER
+
 
 script:
-  - kitchen verify
+  - /opt/chefdk/bin/chef exec kitchen verify
