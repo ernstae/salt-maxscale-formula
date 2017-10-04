@@ -27,12 +27,12 @@ provisioner:
   log_level: <%= ENV['SALT_DEBUG_LEVEL'] || 'info' %>
   formula: <%= formula_name %>
   pillars-from-files:
-    maxscale.sls: pillar.example
+    <%= formula_name %>.sls: pillar.example
   pillars:
     top.sls:
       base:
         '*':
-          - maxscale
+          - <%= formula_name %>
   state_top:
     base:
       '*':
