@@ -13,8 +13,8 @@ addons:
       - apt-transport-https
 
 before_install:
-  - curl -O https://packages.chef.io/files/stable/chefdk/2.3.1/ubuntu/14.04/chefdk_2.3.1-1_amd64.deb
-  - sudo dpkg -i chefdk_2.3.1-1_amd64.deb
+  - curl -O https://packages.chef.io/files/stable/chefdk/2.4.17/ubuntu/16.04/chefdk_2.4.17-1_amd64.deb
+  - sudo dpkg -i chefdk_2.4.17-1_amd64.deb
 install:
   - /opt/chefdk/bin/chef gem install test-kitchen kitchen-docker kitchen-salt
 
