@@ -1,4 +1,4 @@
-## salt-maxscale-formula [![Build Status](https://travis-ci.org/ernstae/salt-maxscale-formula.svg?branch=master)](https://travis-ci.org/ernstae/salt-maxscale-formula)
+## salt-maxscale-formula [![Build Status](https://travis-ci.org/ernstae/salt-maxscale-formula.svg?branch=master)](https://travis-ci.org/ernstae/salt-maxscale-formula) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fernstae%2Fsalt-maxscale-formula.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fernstae%2Fsalt-maxscale-formula?ref=badge_large)
 
 Maintainer: Andrew Ernst <ernstae@github.com>
 
