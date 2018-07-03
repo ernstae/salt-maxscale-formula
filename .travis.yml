@@ -1,8 +1,5 @@
 language: ruby
-
 sudo: true
-
-# test
 
 services:
   - docker
@@ -15,10 +12,11 @@ addons:
       - apt-transport-https
 
 before_install:
-  - curl -O https://packages.chef.io/files/stable/chefdk/2.4.17/ubuntu/16.04/chefdk_2.4.17-1_amd64.deb
-  - sudo dpkg -i chefdk_2.4.17-1_amd64.deb
+  - curl -o chefdk_current.deb https://packages.chef.io/files/stable/chefdk/3.0.36/ubuntu/16.04/chefdk_3.0.36-1_amd64.deb
+  - sudo dpkg -i chefdk_current.deb
+  - sudo apt-get install -f
 install:
-  - /opt/chefdk/bin/chef gem install test-kitchen kitchen-docker kitchen-salt
+  - /opt/chefdk/bin/bundle install
 
 before_script:
   - sudo iptables -L DOCKER || sudo iptables -N DOCKER
