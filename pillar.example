@@ -36,6 +36,7 @@ maxscale:
     QLA:
       type: filter
       module: qlafilter
+      filebase: /tmp/SqlQueryLog
     counter:
       type: filter
       module: topfilter
