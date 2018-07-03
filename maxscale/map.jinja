@@ -1,7 +1,7 @@
 {% set maxscale = salt['grains.filter_by']( {
     'Debian': {
         'etcdir': '/etc',
-        'gpgkeys': ['8167EE24', 'E3C94F49', '1BB943DB', 'C74CD1D8'],
+	'gpg_key': 'http://downloads.mariadb.com/MaxScale/MariaDB-MaxScale-GPG-KEY',
         'repo_url': 'deb http://downloads.mariadb.com/MaxScale/2.1/[[osfullname]] [[oscodename]] main',
         'pkgname': 'maxscale',
     },
@@ -11,6 +11,6 @@
         'baseurl': 'https://downloads.mariadb.com/MaxScale/2.1/rhel/$releasever/$basearch',
         'humanname': 'mariadb',
         'pkgname': 'maxscale',
-        'gpg_key': 'https://downloads.mariadb.com/MaxScale/MariaDB-MaxScale-GPG-KEY',
+        'gpg_key': 'http://downloads.mariadb.com/MaxScale/MariaDB-MaxScale-GPG-KEY',
     },
 }, grain='os_family', merge=salt['pillar.get']('maxscale', {}), default='Debian') %}
