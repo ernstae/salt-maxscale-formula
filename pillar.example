@@ -17,7 +17,7 @@ maxscale:
       user: maxscale
       passwd: crappyfoo
       version_string: 5.7-MariaDB-maxscale
-      wightby: serv_weight
+      weightby: serv_weight
   server:
     server1:
       address: 127.0.0.1
