@@ -1,17 +1,12 @@
 {% set maxscale = pillar.get('maxscale', {}) -%}
-{% set reserved_keys = ['service', 'service', 'server', 'listener', 'filter'] %}
+{% set reserved_keys = ['service', 'server', 'listener', 'filter'] %}
 {% set special_format_fields = ['servers', 'filters'] -%}
 
-[maxscale]
-{%- for option, value in maxscale.get('config',{}).iteritems() %}
-{{option }}={{ value }}
-{%- endfor %}
-
 {%- for reserved_section in reserved_keys -%}
-{%- for section, options in maxscale.get(reserved_section,{}).iteritems() %}
+{%- for section, options in maxscale.get(reserved_section,{}).items() %}
 {%- if options is mapping %}
 [{{ section }}]
-{%- for option, value in options.iteritems() %}
+{%- for option, value in options.items() %}
 {%- if ( option == 'filters' ) %}
 {{ option }}={%- for filtername in value %}{{ filtername }}{%- if not loop.last %}|{%- endif %}{%- endfor %}
 {%- elif ( option == 'servers' ) %}
@@ -22,6 +17,4 @@
 {%- endfor %}
 {%- endif %}
 {%- endfor %}
-
-
 {%- endfor %}

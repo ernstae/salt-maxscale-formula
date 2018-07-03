@@ -17,9 +17,10 @@ maxscale:
       user: maxscale
       passwd: crappyfoo
       version_string: 5.7-MariaDB-maxscale
-      wightby: serv_weight
+      weightby: serv_weight
   server:
     server1:
+      type: server
       address: 127.0.0.1
       port: 3306
       protocol: MySQLBackend
@@ -36,7 +37,8 @@ maxscale:
     QLA:
       type: filter
       module: qlafilter
+      filebase: /tmp/maxscale-qlafilter.log
     counter:
       type: filter
       module: topfilter
-
+      filebase: /tmp/maxscale-topfilter.log
