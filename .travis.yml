@@ -13,14 +13,13 @@ addons:
 
 before_install:
   - curl -o chefdk_current.deb https://packages.chef.io/files/stable/chefdk/3.0.36/ubuntu/16.04/chefdk_3.0.36-1_amd64.deb
+
+install:
   - sudo dpkg -i chefdk_current.deb
   - sudo apt-get install -f
-install:
-  - /opt/chefdk/bin/bundle install
 
 before_script:
   - sudo iptables -L DOCKER || sudo iptables -N DOCKER
-
 
 script:
   - /opt/chefdk/bin/chef exec kitchen verify
