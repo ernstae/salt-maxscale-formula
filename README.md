@@ -6,7 +6,7 @@ Maintainer: Andrew Ernst <ernstae@github.com>
 
 Overview
 --
-This is a saltstack formula for installing and configuring MariaDB MaxScale
+This is a saltstack formula for installing and configuring MariaDB MaxScale, an intelligent db proxy
 
 
 Supported Platforms
